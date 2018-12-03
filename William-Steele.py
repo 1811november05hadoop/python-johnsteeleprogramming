@@ -51,7 +51,7 @@ def main():
 	print('Empty string:',reverse4,'  reversed:',reverse(reverse4))
 
 	print()
-	print(equals_string,' ACRONYM ', equals_string)
+	print(equals_string,' ACRONYM ',equals_string)
 	acronym1 = 'Relational Database Management System'
 	acronym2 = 'One'
 	acronym3 = ''
@@ -62,7 +62,7 @@ def main():
 	print(acronym4,'   ', acronym(acronym4))
 
 	print()
-	print(equals_string,' WHICH TRIANGLE ', equals_string)
+	print(equals_string,' WHICH TRIANGLE ',equals_string)
 	print('20, 20, 20   ', whichTriangle(20,20,20))
 	print('20, 15, 10   ', whichTriangle(20,15,10))
 	print('20, 20, 15   ', whichTriangle(20,20,15))
@@ -70,7 +70,7 @@ def main():
 	print('15, 20, 20   ', whichTriangle(15,20,20))
 
 	print()
-	print(equals_string,' SCRABBLE ', equals_string)
+	print(equals_string,' SCRABBLE ',equals_string)
 	print('f   ',scrabble('f'))
 	print('zoo ',scrabble('zoo'))
 	print('street   ',scrabble('street'))
@@ -78,13 +78,26 @@ def main():
 	print('OxyphenButazone  ',scrabble('OxyphenButazone'))
 
 	print()
-	print(equals_string,' ARMSTRONG ', equals_string)
+	print(equals_string,' ARMSTRONG ',equals_string)
 	print('0   ',armstrong(0))
 	print('9   ',armstrong(9))
 	print('10  ',armstrong(10))
 	print('153  ',armstrong(153))
 	print('100  ',armstrong(100))
 	print('9474  ',armstrong(9474))
+
+	print()
+	print(equals_string,' PRIME FACTORS ',equals_string)
+	print('2:')
+	primeFactors(2)
+	print('9:')
+	primeFactors(9)
+	print('8:')
+	primeFactors(8)
+	print('12:')
+	primeFactors(12)
+	print('901255:')
+	primeFactors(901255)
 
 
 '''
@@ -217,7 +230,17 @@ Note that 1 is not a prime number.
 param: int
 return: list
 '''
-#def primeFactors(number)
+def primeFactors(number):
+	factors = []
+	index = 2
+	while index <= number:
+		if number%index==0:
+			factors.append(index)
+			print(number/index)
+			number/=index
+		else:
+			index+=1
+	print(factors)
 
 '''
 7. Determine if a sentence is a pangram. A pangram (Greek: παν γράμμα, pan
