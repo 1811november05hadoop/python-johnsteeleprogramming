@@ -88,16 +88,24 @@ def main():
 
 	print()
 	print(equals_string,' PRIME FACTORS ',equals_string)
-	print('2:')
-	primeFactors(2)
-	print('9:')
-	primeFactors(9)
-	print('8:')
-	primeFactors(8)
-	print('12:')
-	primeFactors(12)
-	print('901255:')
-	primeFactors(901255)
+	print('2:',primeFactors(2))
+	print('9:',primeFactors(9))
+	print('8:',primeFactors(8))
+	print('12:',primeFactors(12))
+	print('901255:',primeFactors(901255))
+
+	print()
+	print(equals_string,' PANGRAM ',equals_string)
+	print('Empty string:',pangram(''))
+	alphaLowCas = 'abcdefghijklmnopqrstuvwxyz'
+	print(alphaLowCas,': ',pangram('abcdefghijklmnopqrstuvwxyz'))
+	brownFox = 'the quick brown fox jumps over the lazy dog'
+	print(brownFox,': ',pangram(brownFox))
+	missingX = 'a quick movement of the enemy will jeopardize five gunboats'
+	print(missingX,': ',pangram(missingX))
+	missingAn = 'five boxing wizards jump quickly at it'
+	print(missingAn,': ',pangram(missingAn))
+
 
 
 '''
@@ -236,11 +244,10 @@ def primeFactors(number):
 	while index <= number:
 		if number%index==0:
 			factors.append(index)
-			print(number/index)
 			number/=index
 		else:
 			index+=1
-	print(factors)
+	return factors
 
 '''
 7. Determine if a sentence is a pangram. A pangram (Greek: παν γράμμα, pan
@@ -255,7 +262,18 @@ insensitive. Input will not contain non-ASCII symbols.
 param: str
 return: bool
 '''
-#def pangram(sentence):
+def pangram(sentence):
+	result = True
+	alpha = 'abcdefghijklmnopqrstuvwxyz'
+	alphabet = set(alpha)
+	if len(sentence) > 0:
+		for s in sentence:
+			if s.isalpha():
+				if s in alphabet:
+					alphabet.remove(s)
+		if len(alphabet) > 0:
+			result = False
+	return result
 
 '''
 8. Sort list of integers.
