@@ -45,9 +45,9 @@ def main():
 	reverse2 = 'revature'
 	reverse3 = 'gnitset'
 	reverse4 = ''
-	print(reverse1,'   ',reverse(reverse1))
-	print(reverse2,'   ',reverse(reverse2))
-	print(reverse3,'   ',reverse(reverse3))
+	print(reverse1,':   ',reverse(reverse1))
+	print(reverse2,':   ',reverse(reverse2))
+	print(reverse3,':   ',reverse(reverse3))
 	print('Empty string:',reverse4,'  reversed:',reverse(reverse4))
 
 	print()
@@ -56,35 +56,35 @@ def main():
 	acronym2 = 'One'
 	acronym3 = ''
 	acronym4 = 'Complementary Metal-Oxide semiconductor'
-	print(acronym1,'   ', acronym(acronym1))
-	print(acronym2,'   ', acronym(acronym2))
-	print(acronym3,'   ', acronym(acronym3))
-	print(acronym4,'   ', acronym(acronym4))
+	print(acronym1,':   ', acronym(acronym1))
+	print(acronym2,':   ', acronym(acronym2))
+	print('Empty String:   ', acronym(acronym3))
+	print(acronym4,':   ', acronym(acronym4))
 
 	print()
 	print(equals_string,' WHICH TRIANGLE ',equals_string)
-	print('20, 20, 20   ', whichTriangle(20,20,20))
-	print('20, 15, 10   ', whichTriangle(20,15,10))
-	print('20, 20, 15   ', whichTriangle(20,20,15))
-	print('20, 15, 20   ', whichTriangle(20,15,20))
-	print('15, 20, 20   ', whichTriangle(15,20,20))
+	print('20, 20, 20:   ', whichTriangle(20,20,20))
+	print('20, 15, 10:   ', whichTriangle(20,15,10))
+	print('20, 20, 15:   ', whichTriangle(20,20,15))
+	print('20, 15, 20:   ', whichTriangle(20,15,20))
+	print('15, 20, 20:   ', whichTriangle(15,20,20))
 
 	print()
 	print(equals_string,' SCRABBLE ',equals_string)
-	print('f   ',scrabble('f'))
-	print('zoo ',scrabble('zoo'))
-	print('street   ',scrabble('street'))
-	print('quirky   ',scrabble('quirky'))
-	print('OxyphenButazone  ',scrabble('OxyphenButazone'))
+	print('f:   ',scrabble('f'))
+	print('zoo: ',scrabble('zoo'))
+	print('street:   ',scrabble('street'))
+	print('quirky:   ',scrabble('quirky'))
+	print('OxyphenButazone:  ',scrabble('OxyphenButazone'))
 
 	print()
 	print(equals_string,' ARMSTRONG ',equals_string)
-	print('0   ',armstrong(0))
-	print('9   ',armstrong(9))
-	print('10  ',armstrong(10))
-	print('153  ',armstrong(153))
-	print('100  ',armstrong(100))
-	print('9474  ',armstrong(9474))
+	print('0:   ',armstrong(0))
+	print('9:   ',armstrong(9))
+	print('10:  ',armstrong(10))
+	print('153:  ',armstrong(153))
+	print('100:  ',armstrong(100))
+	print('9474:  ',armstrong(9474))
 
 	print()
 	print(equals_string,' PRIME FACTORS ',equals_string)
@@ -109,35 +109,38 @@ def main():
 	print()
 	print(equals_string,' SORTED ',equals_string)
 	firstTest = [8,7,5,3,2,1]
-	print(firstTest,' ',sort(firstTest))
+	print(firstTest,':   ',sort(firstTest))
 	repeatValues = [6,12,91,91,13,1,6]
-	print(repeatValues,'  ',sort(repeatValues))
+	print(repeatValues,':   ',sort(repeatValues))
 	emptyList = []
-	print(emptyList,'  ',sort(emptyList))
+	print(emptyList,':  ',sort(emptyList))
 	withNegatives = [9,-4,10,-13,0,20,15,18]
-	print(withNegatives,'  ',sort(withNegatives))
+	print(withNegatives,':  ',sort(withNegatives))
 	oneElement = [0]
-	print(oneElement,'  ',sort(oneElement))
+	print(oneElement,':  ',sort(oneElement))
 
 	print()
 	print(equals_string,' ROTATE ',equals_string)
 	print('Key   Input   Rotated')
 	firstKey = 13
 	firstString = 'a'
-	print(firstKey,'  ',firstString,'  ',rotate(firstKey,firstString))
+	print(firstKey,'  ',firstString,':  ',rotate(firstKey,firstString))
 	secondKey = 5
 	secondString = 'OMG'
-	print(secondKey,'  ',secondString,'  ',rotate(secondKey,secondString))
+	print(secondKey,'  ',secondString,':  ',rotate(secondKey,secondString))
 	thirdKey = 4
 	thirdString = 'Testing 1 2 3 testing'
-	print(thirdKey,'  ',thirdString,'  ',rotate(thirdKey,thirdString))
+	print(thirdKey,'  ',thirdString,':  ',rotate(thirdKey,thirdString))
 	fourthKey = 21
 	fourthString = 'Let\'s eat, Grandma!'
-	print(fourthKey,'  ',fourthString,'  ',rotate(fourthKey,fourthString))
+	print(fourthKey,'  ',fourthString,':  ',rotate(fourthKey,fourthString))
 	fifthKey = 13
 	fifthString = 'The quick brown fox jumps over the lazy dog.'
-	print(fifthKey,'  ',fifthString,'  ',rotate(fifthKey,fifthString))
+	print(fifthKey,'  ',fifthString,':  ',rotate(fifthKey,fifthString))
 
+	print()
+	print(equals_string,' EVEN AND ODDS',equals_string)
+	evenAndOdds()
 '''
 1. Reverse a String. Example: reverse("example"); -> "elpmaxe"
 
@@ -385,7 +388,20 @@ the odd numbers in a file called odd.txt.
 param: none, from the keyboard
 return: nothing
 '''
-#def evenAndOdds():
+def evenAndOdds():
+	userInput = input('Give 10 numbers. Seperate each number with a space. Hit Enter when done.')
+	listNumbers = userInput.split()
+	listNumbers= [int(i) for i in listNumbers]
+	
+	for index in listNumbers:
+		if (index%2 == 0):
+			outfile = open('even.txt', 'a+')
+			outfile.write(str(index)+' ')
+			outfile.close()
+		elif (index%2 == 1):
+			outfile = open('odd.txt', 'a+')
+			outfile.write(str(index)+' ')
+			outfile.close()
 
 if __name__ == "__main__":
 	main()
