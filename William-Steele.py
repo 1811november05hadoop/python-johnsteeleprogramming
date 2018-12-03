@@ -118,6 +118,26 @@ def main():
 	print(withNegatives,'  ',sort(withNegatives))
 	oneElement = [0]
 	print(oneElement,'  ',sort(oneElement))
+
+	print()
+	print(equals_string,' ROTATE ',equals_string)
+	print('Key   Input   Rotated')
+	firstKey = 13
+	firstString = 'a'
+	print(firstKey,'  ',firstString,'  ',rotate(firstKey,firstString))
+	secondKey = 5
+	secondString = 'OMG'
+	print(secondKey,'  ',secondString,'  ',rotate(secondKey,secondString))
+	thirdKey = 4
+	thirdString = 'Testing 1 2 3 testing'
+	print(thirdKey,'  ',thirdString,'  ',rotate(thirdKey,thirdString))
+	fourthKey = 21
+	fourthString = 'Let\'s eat, Grandma!'
+	print(fourthKey,'  ',fourthString,'  ',rotate(fourthKey,fourthString))
+	fifthKey = 13
+	fifthString = 'The quick brown fox jumps over the lazy dog.'
+	print(fifthKey,'  ',fifthString,'  ',rotate(fifthKey,fifthString))
+
 '''
 1. Reverse a String. Example: reverse("example"); -> "elpmaxe"
 
@@ -337,7 +357,26 @@ quick brown fox jumps over the lazy dog.
 param: int, str
 return: str
 '''
-#def rotate(key, string):
+def rotate(key, string):
+	alphaLo = 'abcdefghijklmnopqrstuvwxyz'
+	alphaUp = alphaLo.upper()
+	alphaRotLo = alphaLo[key:] + alphaLo[0:key]
+	alphaRotUp = alphaRotLo.upper()
+	encrypted = ''
+	index = 0
+	while index < len(string):
+		if string[index] in alphaLo:
+			location = alphaLo.find(string[index])
+			replaceTemp = alphaRotLo[location]
+			encrypted = encrypted + replaceTemp
+		elif string[index] in alphaUp:
+			location = alphaUp.find(string[index])
+			replaceTemp = alphaRotUp[location]
+			encrypted = encrypted + replaceTemp
+		else:
+			encrypted = encrypted + string[index]
+		index+=1
+	return encrypted
 
 '''
 10. Take 10 numbers as input from the user and store all the even numbers in a file called even.txt and
