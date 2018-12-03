@@ -106,8 +106,18 @@ def main():
 	missingAn = 'five boxing wizards jump quickly at it'
 	print(missingAn,': ',pangram(missingAn))
 
-
-
+	print()
+	print(equals_string,' SORTED ',equals_string)
+	firstTest = [8,7,5,3,2,1]
+	print(firstTest,' ',sort(firstTest))
+	repeatValues = [6,12,91,91,13,1,6]
+	print(repeatValues,'  ',sort(repeatValues))
+	emptyList = []
+	print(emptyList,'  ',sort(emptyList))
+	withNegatives = [9,-4,10,-13,0,20,15,18]
+	print(withNegatives,'  ',sort(withNegatives))
+	oneElement = [0]
+	print(oneElement,'  ',sort(oneElement))
 '''
 1. Reverse a String. Example: reverse("example"); -> "elpmaxe"
 
@@ -286,7 +296,17 @@ Rules:
 param: list
 return: list
 '''
-#def sort(numbers):
+def sort(numbers):
+	temp = numbers.copy()
+	sortedNumbers = []
+	while len(temp) > 0:
+		lowest = temp[0]
+		for n in temp:
+			if lowest > n:
+				lowest = n
+		temp.remove(lowest)
+		sortedNumbers.append(lowest)
+	return sortedNumbers
 
 '''
 9. Create an implementation of the rotational cipher, also sometimes called
